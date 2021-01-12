@@ -1,6 +1,7 @@
 # Reaktor pre-assignment solution for Developer, summer 2021 - REST edition
 
 My solution for the pre-assignment. This is the _REST_ version. A different version using __GraphQl__ may come in the near future...
+Technologies here used are: TypeScript, Express, node.js ont the backend, React on the frontend.
 
 ## Important files
 
@@ -10,6 +11,8 @@ The information is later stored in json files.
 
 ### productInfoList.ts
 Serves the product information for the category requested by the client, reading the information from the json files in data_files folder.
+
+The React frontend can be found in the client folder!
 
 ## Instructions
 
