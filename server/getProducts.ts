@@ -49,8 +49,9 @@ const getProducts = async (product: string): Promise<ProductInfo[] | undefined>=
         return productInfo;
     } catch (err) {
         const result = (err as Error).message;
-        console.log(result);
+        console.error(result);
     }
+    //return undefined, id something goes wrong...
     return undefined;
 };
 

@@ -56,8 +56,9 @@ const getProducts = (product) => __awaiter(void 0, void 0, void 0, function* () 
     }
     catch (err) {
         const result = err.message;
-        console.log(result);
+        console.error(result);
     }
+    //return undefined, id something goes wrong...
     return undefined;
 });
 exports.default = getProducts;

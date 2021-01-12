@@ -29,22 +29,24 @@ const reactApp = express_1.default.static('./client/build');
 app.use(reactApp);
 const PORT = 3001;
 //Get all the information for every product category and save them into files...
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        console.log("Here");
-        const beanies = yield getProducts_1.default('beanies');
-        const gloves = yield getProducts_1.default('gloves');
-        const facemasks = yield getProducts_1.default('facemasks');
-        console.log("ready!");
-        fs_1.default.writeFileSync('./data_files/beanies.json', JSON.stringify(beanies));
-        fs_1.default.writeFileSync('./data_files/gloves.json', JSON.stringify(gloves));
-        fs_1.default.writeFileSync('./data_files/facemasks.json', JSON.stringify(facemasks));
-    }
-    catch (err) {
-        console.error(err.message);
-    }
-}), 1000 * 60 * 5); //update every 5 minutes
+setInterval(() => {
+    const writeDataToFiles = () => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            console.log("Here");
+            const beanies = yield getProducts_1.default('beanies');
+            const gloves = yield getProducts_1.default('gloves');
+            const facemasks = yield getProducts_1.default('facemasks');
+            console.log("ready!");
+            fs_1.default.writeFileSync('./data_files/beanies.json', JSON.stringify(beanies));
+            fs_1.default.writeFileSync('./data_files/gloves.json', JSON.stringify(gloves));
+            fs_1.default.writeFileSync('./data_files/facemasks.json', JSON.stringify(facemasks));
+        }
+        catch (err) {
+            console.error(err.message);
+        }
+    });
+    void writeDataToFiles();
+}, 1000 * 60 * 5); //update every 5 minutes
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
